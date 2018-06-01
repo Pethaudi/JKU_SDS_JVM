@@ -12,6 +12,14 @@
         <kotlin.version>1.2.41</kotlin.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>exposed</id>
+            <name>exposed</name>
+            <url>https://dl.bintray.com/kotlin/exposed</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.jetbrains.exposed</groupId>
