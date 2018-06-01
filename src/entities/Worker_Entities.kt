@@ -22,6 +22,7 @@ data class JKU_SDS_Entry(
         val sunset: Timestamp,
         val minAfterSunrise: Number,
         val minPreSunrise: Number,
+        val densityOfPopulation: Number,
         val gym: Number,
         val pokestop: Number
 )
