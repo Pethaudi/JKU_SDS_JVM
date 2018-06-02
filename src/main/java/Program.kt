@@ -1,4 +1,5 @@
-fun main(args: Array<String>){
-    println("Test")
+import DataForeman.ApperanceData
 
+fun main(args: Array<String>){
+    ApperanceData().start()
 }
