@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
-    <persistence-unit name="atlasdb" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="myPU" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>entities.POKEMON</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
         <properties>
-            <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
+            <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@atlas.htl-leonding.ac.at:1521:atlasdb"/>
-            <property name="javax.persistence.jdbc.user" value="in110098"/>
-            <property name="javax.persistence.jdbc.password" value="Kurkisnov1"/>
+            <property name="javax.persistence.jdbc.user" value="..."/>
+            <property name="javax.persistence.jdbc.password" value="..."/>
         </properties>
     </persistence-unit>
 </persistence>

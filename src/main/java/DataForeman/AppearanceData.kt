@@ -1,6 +1,6 @@
 package DataForeman
 
-import entities.JKU_SDS_Entry
+import entities.APPEARANCE
 import java.io.File
 
 /*
@@ -17,7 +17,7 @@ class AppearanceData {
                 commands = mutableListOf()
             }
             if(i != 0){
-                commands.add(JKU_SDS_Entry.generateSqlCommand(basefile[i]))
+                //commands.add(JKU_SDS_Entry.generateSqlCommand(basefile[i]))
             }
         }
 

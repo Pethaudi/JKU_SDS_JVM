@@ -1,5 +1,6 @@
 package entities
 
+import java.io.Serializable
 import javax.persistence.Entity
 import javax.persistence.Id
 import javax.persistence.Table
@@ -43,4 +44,4 @@ data class POKEMON(
         val defense: Number,
         val sum: Number,
         val maxtournamentpoints: Number
-)
+) : Serializable
