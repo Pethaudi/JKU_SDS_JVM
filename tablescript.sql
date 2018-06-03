@@ -3,10 +3,10 @@ drop table POKEMON;
 drop TABLE POKEMON_SIGHTS;
 
 CREATE TABLE POKEMON(
-  id INTEGER PRIMARY KEY,
+  id NUMBER(4) PRIMARY KEY,
   name VARCHAR2(30),
-  height FLOAT,
-  weight FLOAT,
+  height NUMBER(10,10),
+  weight NUMBER(10,10),
   type VARCHAR2(30),
   category VARCHAR2(30),
   hp INTEGER,
@@ -200,3 +200,5 @@ cooc151 char(1)
 );
 
 grant all on POKEMON_SIGHTS to in140068;
+
+select * from POKEMON;
