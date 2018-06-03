@@ -1,22 +1,37 @@
 package DataForeman
 
+import entities.JKU_SDS_Entry
 import java.io.File
 
 /*
 This class just splits the PokemonData.csv into other files
  */
-class ApperanceData {
+class AppearanceData {
     fun start(){
+        val basefile = File("PokemonData.csv").readLines()
+        val commandfiles = mutableListOf<MutableList<String>>()
+        var commands = mutableListOf<String>()
+        for(i in basefile.indices){
+            if(i % 50000 == 0  || i + 1 == basefile.count()){
+                commandfiles.add(commands)
+                commands = mutableListOf()
+            }
+            if(i != 0){
+                commands.add(JKU_SDS_Entry.generateSqlCommand(basefile[i]))
+            }
+        }
+
+        createFiles(commandfiles)
+    }
+
+    private fun splitFile(){
         val basefile = File("PokemonData.csv").readLines()
         val splitter = mutableListOf<MutableList<String>>()
 
         var tmp = mutableListOf<String>()
 
         for(i in basefile.indices){
-            if(i == 0){
-
-            }
-            else if (i % 100000 == 0){
+            if (i % 1000 == 0 || i + 1 == basefile.count()){
                 splitter.add(tmp)
                 tmp = mutableListOf()
                 tmp.add(basefile[0])
