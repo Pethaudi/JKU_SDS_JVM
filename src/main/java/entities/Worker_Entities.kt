@@ -1,14 +1,15 @@
 package entities
 
-import java.sql.Date
-import java.sql.Timestamp
+import javax.persistence.Entity
+import javax.persistence.Id
+import javax.persistence.Table
 
 data class APPEARANCE(
         val id: Number,
         val degreeOfLatitude: Number,
         val degreeOfLongitude: Number,
-        val date: Date,
-        val time: Timestamp,
+        val date: String,
+        val time: String,
         val terrain: String,
         val distanceToWater: Number,
         val city: String,
@@ -18,11 +19,28 @@ data class APPEARANCE(
         val windvelocity: Number,
         val winddirection: Number,
         val airpressure: Number,
-        val sunrise: Timestamp,
-        val sunset: Timestamp,
+        val sunrise: String,
+        val sunset: String,
         val minAfterSunrise: Number,
         val minPreSunrise: Number,
         val densityOfPopulation: Number,
         val gym: Number,
         val pokestop: Number
+)
+
+@Entity
+@Table(schema = "IN110098", name = "POKEMON")
+data class POKEMON(
+        @Id
+        val id: Number,
+        val name: String,
+        val height: Number,
+        val weight: Number,
+        val type: String,
+        val category: String,
+        val hp: Number,
+        val attack: Number,
+        val defense: Number,
+        val sum: Number,
+        val maxtournamentpoints: Number
 )
