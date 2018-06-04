@@ -1,37 +1,85 @@
 package entities
 
 import java.io.Serializable
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
+import kotlin.math.min
 
-data class APPEARANCE(
-        val id: Number,
-        val degreeOfLatitude: Number,
-        val degreeOfLongitude: Number,
-        val date: String,
-        val time: String,
-        val terrain: String,
-        val distanceToWater: Number,
-        val city: String,
-        val continent: String,
-        val weather: String,
-        val temperature: Number,
-        val windvelocity: Number,
-        val winddirection: Number,
-        val airpressure: Number,
-        val sunrise: String,
-        val sunset: String,
-        val minAfterSunrise: Number,
-        val minPreSunrise: Number,
-        val densityOfPopulation: Number,
-        val gym: Number,
-        val pokestop: Number
-)
+@Entity
+@Table(schema = "IN110098", name = "APPEARANCE")
+class Appearance() : Serializable {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Number? = null
+    var pokemonid: Number? = null
+    var degreeOfLatitude: Number? = null
+    var degreeOfLongitude: Number? = null
+    var date: String? = null
+    var time: String? = null
+    var terrain: String? = null
+    var distanceToWater: Number? = null
+    var city: String? = null
+    var continent: String? = null
+    var weather: String? = null
+    var temperature: Number? = null
+    var windvelocity: Number? = null
+    var winddirection: Number? = null
+    var airpressure: Number? = null
+    var sunrise: String? = null
+    var sunset: String? = null
+    var minAfterSunrise: Number? = null
+    var minPreSunrise: Number? = null
+    var densityOfPopulation: Number? = null
+    var gym: Number? = null
+    var pokestop: Number? = null
+
+    constructor(id: Number,
+                degreeOfLatitude: Number,
+                degreeOfLongitude: Number,
+                date: String,
+                time: String,
+                terrain: String,
+                distanceToWater: Number,
+                city: String,
+                continent: String,
+                weather: String,
+                temperature: Number,
+                windvelocity: Number,
+                winddirection: Number,
+                airpressure: Number,
+                sunrise: String,
+                sunset: String,
+                minAfterSunrise: Number,
+                minPreSunrise: Number,
+                densityOfPopulation: Number,
+                gym: Number,
+                pokestop: Number) : this(){
+
+        this.pokemonid = id
+        this.degreeOfLatitude = degreeOfLatitude
+        this.degreeOfLongitude = degreeOfLongitude
+        this.date = date
+        this.time = time
+        this.terrain = terrain
+        this.distanceToWater = distanceToWater
+        this.city = city
+        this.continent = continent
+        this.weather = weather
+        this.temperature = temperature
+        this.windvelocity = windvelocity
+        this.winddirection = winddirection
+        this.airpressure = airpressure
+        this.sunrise = sunrise
+        this.sunset = sunset
+        this.minAfterSunrise = minAfterSunrise
+        this.minPreSunrise = minPreSunrise
+        this.densityOfPopulation = densityOfPopulation
+        this.gym = gym
+        this.pokestop = pokestop
+    }
+}
 
 @Entity
 @Table(schema = "IN110098", name = "POKEMON")
-class POKEMON() : Serializable {
+class Pokemon() : Serializable {
     constructor(id: Number,
                 name: String,
                 height: Number,

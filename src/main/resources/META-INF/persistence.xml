@@ -2,7 +2,8 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
     <persistence-unit name="myPU" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <class>entities.POKEMON</class>
+        <class>entities.Pokemon</class>
+        <class>entities.Appearance</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
 
         <properties>
