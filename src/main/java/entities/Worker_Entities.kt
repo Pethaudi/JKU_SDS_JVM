@@ -14,7 +14,7 @@ data class APPEARANCE(
         val terrain: String,
         val distanceToWater: Number,
         val city: String,
-        val continent:String,
+        val continent: String,
         val weather: String,
         val temperature: Number,
         val windvelocity: Number,
@@ -31,17 +31,42 @@ data class APPEARANCE(
 
 @Entity
 @Table(schema = "IN110098", name = "POKEMON")
-data class POKEMON(
-        @Id
-        val id: Number,
-        val name: String,
-        val height: Number,
-        val weight: Number,
-        val type: String,
-        val category: String,
-        val hp: Number,
-        val attack: Number,
-        val defense: Number,
-        val sum: Number,
-        val maxtournamentpoints: Number
-) : Serializable
+class POKEMON() : Serializable {
+    constructor(id: Number,
+                name: String,
+                height: Number,
+                weight: Number,
+                type: String,
+                category: String,
+                hp: Number,
+                attack: Number,
+                defense: Number,
+                sum: Number,
+                maxtournamentpoints: Number) : this() {
+
+        this.id = id
+        this.name = name
+        this.height = height
+        this.weight = weight
+        this.type = type
+        this.category = category
+        this.hp = hp
+        this.attack = attack
+        this.defense = defense
+        this.sum = sum
+        this.maxtournamentpoints = maxtournamentpoints
+    }
+
+    @Id
+    var id: Number? = null
+    var name: String? = null
+    var height: Number? = null
+    var weight: Number? = null
+    var type: String? = null
+    var category: String? = null
+    var hp: Number? = null
+    var attack: Number? = null
+    var defense: Number? = null
+    var sum: Number? = null
+    var maxtournamentpoints: Number? = null
+}
