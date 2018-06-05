@@ -1,6 +1,6 @@
 package DataForeman
 
-import entities.APPEARANCE
+import entities.Appearance
 import java.io.File
 
 /*

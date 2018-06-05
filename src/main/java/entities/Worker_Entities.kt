@@ -6,115 +6,116 @@ import kotlin.math.min
 
 @Entity
 @Table(schema = "IN110098", name = "APPEARANCE")
-class Appearance() : Serializable {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Number? = null
-    var pokemonid: Number? = null
-    var degreeOfLatitude: Number? = null
-    var degreeOfLongitude: Number? = null
-    var date: String? = null
-    var time: String? = null
-    var terrain: String? = null
-    var distanceToWater: Number? = null
-    var city: String? = null
-    var continent: String? = null
-    var weather: String? = null
-    var temperature: Number? = null
-    var windvelocity: Number? = null
-    var winddirection: Number? = null
-    var airpressure: Number? = null
-    var sunrise: String? = null
-    var sunset: String? = null
-    var minAfterSunrise: Number? = null
-    var minPreSunrise: Number? = null
-    var densityOfPopulation: Number? = null
-    var gym: Number? = null
-    var pokestop: Number? = null
+data class Appearance(
+    @Id
+    @SequenceGenerator(name = "seq", sequenceName = "AUTO_INC", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
+    @Column(name = "ID")
+    val id: Number? = null,
+    val pokemonid: Number? = null,
+    val degreeOfLatitude: Number? = null,
+    val degreeOfLongitude: Number? = null,
+    val dateofspawn: String? = null,
+    val time: String? = null,
+    val terrain: String? = null,
+    val distanceToWater: Number? = null,
+    val city: String? = null,
+    val continent: String? = null,
+    val weather: String? = null,
+    val temperature: Number? = null,
+    val windvelocity: Number? = null,
+    val winddirection: Number? = null,
+    val airpressure: Number? = null,
+    val sunrise: String? = null,
+    val sunset: String? = null,
+    val minAfterSunrise: Number? = null,
+    val minPreSunrise: Number? = null,
+    val densityOfPopulation: Number? = null,
+    val gym: Number? = null,
+    val pokestop: Number? = null
+    ) : Serializable {
 
-    constructor(id: Number,
-                degreeOfLatitude: Number,
-                degreeOfLongitude: Number,
-                date: String,
-                time: String,
-                terrain: String,
-                distanceToWater: Number,
-                city: String,
-                continent: String,
-                weather: String,
-                temperature: Number,
-                windvelocity: Number,
-                winddirection: Number,
-                airpressure: Number,
-                sunrise: String,
-                sunset: String,
-                minAfterSunrise: Number,
-                minPreSunrise: Number,
-                densityOfPopulation: Number,
-                gym: Number,
-                pokestop: Number) : this(){
+    companion object {
+        fun generateFromCsv(s: String): Appearance {
+            val splitted = s.split(";")
 
-        this.pokemonid = id
-        this.degreeOfLatitude = degreeOfLatitude
-        this.degreeOfLongitude = degreeOfLongitude
-        this.date = date
-        this.time = time
-        this.terrain = terrain
-        this.distanceToWater = distanceToWater
-        this.city = city
-        this.continent = continent
-        this.weather = weather
-        this.temperature = temperature
-        this.windvelocity = windvelocity
-        this.winddirection = winddirection
-        this.airpressure = airpressure
-        this.sunrise = sunrise
-        this.sunset = sunset
-        this.minAfterSunrise = minAfterSunrise
-        this.minPreSunrise = minPreSunrise
-        this.densityOfPopulation = densityOfPopulation
-        this.gym = gym
-        this.pokestop = pokestop
+            val pokestop = try {
+                splitted[20].toDouble()
+            } catch (ex: Exception){
+                null
+            }
+
+            try {
+                return Appearance(null,
+                        splitted[0].toInt(),
+                        splitted[1].tryToDouble(),
+                        splitted[2].tryToDouble(),
+                        splitted[3],
+                        splitted[4],
+                        splitted[5],
+                        splitted[6].tryToDouble(),
+                        splitted[7],
+                        splitted[8],
+                        splitted[9],
+                        splitted[10].tryToDouble(),
+                        splitted[11].tryToDouble(),
+                        splitted[12].tryToDouble(),
+                        splitted[13].tryToDouble(),
+                        splitted[14],
+                        splitted[15],
+                        splitted[16].toInt(),
+                        splitted[17].toInt(),
+                        splitted[18].tryToDouble(),
+                        splitted[19].tryToDouble(),
+                        pokestop)
+            } catch(ex: Exception){
+                println(s)
+                throw ex
+            }
+        }
+
+        inline fun String.tryToDouble(): Double? {
+            return try{
+                this.toDouble()
+            } catch(ex: Exception){
+                null
+            }
+        }
     }
 }
 
 @Entity
 @Table(schema = "IN110098", name = "POKEMON")
-class Pokemon() : Serializable {
-    constructor(id: Number,
-                name: String,
-                height: Number,
-                weight: Number,
-                type: String,
-                category: String,
-                hp: Number,
-                attack: Number,
-                defense: Number,
-                sum: Number,
-                maxtournamentpoints: Number) : this() {
-
-        this.id = id
-        this.name = name
-        this.height = height
-        this.weight = weight
-        this.type = type
-        this.category = category
-        this.hp = hp
-        this.attack = attack
-        this.defense = defense
-        this.sum = sum
-        this.maxtournamentpoints = maxtournamentpoints
-    }
-
+data class Pokemon(
     @Id
-    var id: Number? = null
-    var name: String? = null
-    var height: Number? = null
-    var weight: Number? = null
-    var type: String? = null
-    var category: String? = null
-    var hp: Number? = null
-    var attack: Number? = null
-    var defense: Number? = null
-    var sum: Number? = null
-    var maxtournamentpoints: Number? = null
+    val id: Number? = null,
+    val name: String? = null,
+    val height: Number? = null,
+    val weight: Number? = null,
+    val type: String? = null,
+    val category: String? = null,
+    val hp: Number? = null,
+    val attack: Number? = null,
+    val defense: Number? = null,
+    val sum: Number? = null,
+    val maxtp: Number? = null
+    ) : Serializable {
+
+    companion object {
+        fun generateFromCsv(s: String): Pokemon{
+            val splitted = s.split(";")
+
+            return Pokemon(splitted[0].toInt(),
+                    splitted[1],
+                    splitted[2].toDouble(),
+                    splitted[3].toDouble(),
+                    splitted[4],
+                    splitted[5],
+                    splitted[6].toInt(),
+                    splitted[7].toInt(),
+                    splitted[8].toInt(),
+                    splitted[9].toInt(),
+                    splitted[10].toInt())
+        }
+    }
 }

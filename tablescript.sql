@@ -1,49 +1,61 @@
 drop TABLE APPEARANCE;
 drop table POKEMON;
 drop TABLE POKEMON_SIGHTS;
+drop SEQUENCE auto_inc;
 
-CREATE TABLE POKEMON(
-  id NUMBER(4) PRIMARY KEY,
-  name VARCHAR2(30),
-  height NUMBER(10,10),
-  weight NUMBER(10,10),
-  type VARCHAR2(30),
-  category VARCHAR2(30),
-  hp INTEGER,
-  attack INTEGER,
-  defense INTEGER,
-  sum INTEGER,
-  maxTournamentpoints INTEGER
-);
+CREATE TABLE POKEMON
+(
+  ID                  NUMBER NOT NULL
+    PRIMARY KEY,
+  NAME                VARCHAR2(30),
+  HEIGHT              NUMBER(*,1),
+  WEIGHT              NUMBER(*,1),
+  TYPE                VARCHAR2(30),
+  CATEGORY            VARCHAR2(30),
+  HP                  NUMBER,
+  ATTACK              NUMBER,
+  DEFENSE             NUMBER,
+  SUM                 NUMBER,
+  MAXTP NUMBER
+)
+/
 
 grant all on POKEMON to in140068;
 
-CREATE TABLE APPEARANCE(
-id  number(5),
-degreeoflatitude	 number(37,10),
-degreeoflongitude	 number(37,10),
-dateofspawn VARCHAR2(30),
-time VARCHAR2(30),
-terrain varchar2(37),
-distancetowater number(4),
-city varchar2(37),
-continent varchar2(37),
-weather varchar2(37),
-Temperature	 number(37,10),
-Windvelocity	 number(37,10),
-Winddirection	 number(37),
-airpressure	 number(37,10),
-sunrise VARCHAR2(30),
-sunset VARCHAR2(30),
-minaftersunrise number,
-minpresunrise number,
-densityofpopulation number(37,10),
-Gym number(37,10),
-Pokestop number(37,10),
-FOREIGN KEY (id) REFERENCES POKEMON(id)
+CREATE TABLE APPEARANCE
+(
+  id                  NUMBER PRIMARY KEY,
+  POKEMONID           NUMBER
+    REFERENCES POKEMON,
+  DEGREEOFLATITUDE    FLOAT,
+  DEGREEOFLONGITUDE   FLOAT,
+  DATEOFSPAWN         VARCHAR2(30),
+  TIME                VARCHAR2(30),
+  TERRAIN             VARCHAR2(37),
+  DISTANCETOWATER     NUMBER(4),
+  CITY                VARCHAR2(37),
+  CONTINENT           VARCHAR2(37),
+  WEATHER             VARCHAR2(37),
+  TEMPERATURE         FLOAT,
+  WINDVELOCITY        FLOAT,
+  WINDDIRECTION       NUMBER(37),
+  AIRPRESSURE         FLOAT,
+  SUNRISE             VARCHAR2(30),
+  SUNSET              VARCHAR2(30),
+  MINAFTERSUNRISE     NUMBER,
+  MINPRESUNRISE       NUMBER,
+  DENSITYOFPOPULATION FLOAT,
+  GYM                 FLOAT,
+  POKESTOP            FLOAT
 );
 
 grant all on APPEARANCE to in140068;
+
+SELECT * from APPEARANCE;
+
+create sequence auto_inc;
+
+select * from POKEMON;
 
 CREATE TABLE POKEMON_SIGHTS(
   cooc1 char(1),
