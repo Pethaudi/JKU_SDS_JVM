@@ -5,6 +5,10 @@ import dao.JsonWorker
 import digger.BasicSizes
 import entities.AppearanceContinent
 import entities.NamePercentage
+import java.io.File
+
+val web_hauer = "/Users/peterhauer/Desktop/ProgrammingStuff/DataScience/JKU_SDS_WEB/src/data"
+val web_oberaigner = ""
 
 fun main(args: Array<String>){
     //AppearanceData().start()
@@ -27,4 +31,14 @@ fun main(args: Array<String>){
 
     JsonWorker.writeToFile("AppearancesPerContinentPercentage",
             BasicSizes.getAppearancesPerContinentPercentage().map { NamePercentage.toJson(it) })
+
+    copyFilesToWeb(web_hauer)
+}
+
+fun copyFilesToWeb(path: String){
+    val data = File("results")
+    data.listFiles().forEach {
+        val dest = File(path + "/" + it.name)
+        it.copyTo(dest, true)
+    }
 }
