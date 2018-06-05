@@ -59,3 +59,30 @@ class AppearanceContinent(
         }
     }
 }
+
+class NamePercentage(
+        val name: String,
+        val percentage: Double
+) {
+    companion object : IJson {
+        override fun toJson(obj: Any): JsonObject {
+
+            if(obj is NamePercentage) {
+                val builder = Json.createObjectBuilder()
+
+                return builder.add("name", obj.name)
+                        .add("percentage", obj.percentage)
+                        .build()
+            }
+            throw IllegalArgumentException()
+        }
+
+        override fun toObject(json: JsonObject): Any {
+            try{
+                return AppearanceContinent(json["name"]!!.toString(), json["percentage"]!!.toString().toInt())
+            } catch(ex: Exception){
+                throw IllegalArgumentException()
+            }
+        }
+    }
+}

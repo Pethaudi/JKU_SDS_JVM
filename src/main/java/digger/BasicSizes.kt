@@ -3,6 +3,7 @@ package digger
 import dao.CsvWorker
 import entities.Appearance
 import entities.AppearanceContinent
+import entities.NamePercentage
 import entities.Pokemon
 
 class BasicSizes {
@@ -45,6 +46,15 @@ class BasicSizes {
             }
 
             return this.appearancesPerContinent!!
+        }
+
+        fun getAppearancesPerContinentPercentage(): List<NamePercentage> {
+            val res = mutableListOf<NamePercentage>()
+            var sum = getAppearancesPerContinent().size
+            getAppearancesPerContinent().forEach {
+                res.add(NamePercentage(it.continent, it.calcPercentage(sum)))
+            }
+            return res
         }
     }
 }
