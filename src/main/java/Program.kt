@@ -5,7 +5,7 @@ import dao.DbWorker
 fun main(args: Array<String>){
     //AppearanceData().start()
     //DBWorker.testMe()
+    val current = System.currentTimeMillis()
     val worker = CsvWorker()
-    //worker.insertPokemons()
-    worker.insertAppearances()
+    println("millisec: ${worker.measureReadInTime()}")
 }
