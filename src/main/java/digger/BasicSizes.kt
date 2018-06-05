@@ -50,10 +50,12 @@ class BasicSizes {
 
         fun getAppearancesPerContinentPercentage(): List<NamePercentage> {
             val res = mutableListOf<NamePercentage>()
-            var sum = getAppearancesPerContinent().size
+            var sum = appearances.size
+
             getAppearancesPerContinent().forEach {
                 res.add(NamePercentage(it.continent, it.calcPercentage(sum)))
             }
+
             return res
         }
     }
