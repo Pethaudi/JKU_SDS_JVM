@@ -1,6 +1,7 @@
 import DataForeman.AppearanceData
 import dao.CsvWorker
 import dao.DbWorker
+import dao.JsonWorker
 import digger.BasicSizes
 import entities.AppearanceContinent
 
@@ -16,4 +17,5 @@ fun main(args: Array<String>){
             }*/
 
     val json = BasicSizes.getAppearancesPerContinent().map { AppearanceContinent.toJson(it) }
+    JsonWorker.writeToFile("AppearancesPerContinent", json)
 }

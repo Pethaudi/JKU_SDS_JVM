@@ -45,6 +45,8 @@
     <orderEntry type="library" name="Maven: org.eclipse.persistence:commonj.sdo:2.1.1" level="project" />
     <orderEntry type="library" name="Maven: javax.persistence:javax.persistence-api:2.2" level="project" />
     <orderEntry type="library" name="Maven: com.oracle:ojdbc7:12.1.0.1.0" level="project" />
+    <orderEntry type="library" name="Maven: javax.json:javax.json-api:1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.glassfish:javax.json:1.1" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.41" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.2.41" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:13.0" level="project" />
