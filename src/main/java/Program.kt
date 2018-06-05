@@ -23,5 +23,8 @@ fun main(args: Array<String>){
     //worker.insertAppearances()
 
     JsonWorker.writeToFile("AppearancesPerContinent",
+            BasicSizes.getAppearancesPerContinent().map { AppearanceContinent.toJson(it) })
+
+    JsonWorker.writeToFile("AppearancesPerContinentPercentage",
             BasicSizes.getAppearancesPerContinentPercentage().map { NamePercentage.toJson(it) })
 }
