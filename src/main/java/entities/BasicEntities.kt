@@ -102,7 +102,7 @@ class NameCounter(
                 val builder = Json.createObjectBuilder()
 
                 return builder.add("name", obj.name)
-                        .add("percentage", obj.counter)
+                        .add("counter", obj.counter)
                         .build()
             }
             throw IllegalArgumentException()
