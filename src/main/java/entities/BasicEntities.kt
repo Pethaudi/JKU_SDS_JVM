@@ -20,47 +20,8 @@ open class Counter(
 ){
     open fun calcPercentage(sum: Int) = (counter / sum.toDouble()) * 100
 
-    fun inc(){
-        counter++
-    }
-
     companion object {
         fun sum(data: List<Counter>) = data.sumBy { it.counter }
-    }
-}
-
-/*
-self-explaining
- */
-class AppearanceContinent(
-        val continent: String,
-        counter: Int = 0
-) : Counter(counter) {
-
-    /*
-    cause static
-     */
-    companion object : IJson {
-
-        override fun toJson(obj: Any): JsonObject {
-
-            if(obj is AppearanceContinent) {
-                val builder = Json.createObjectBuilder()
-
-                return builder.add("continent", obj.continent)
-                        .add("counter", obj.counter)
-                        .build()
-            }
-            throw IllegalArgumentException()
-        }
-
-        override fun toObject(json: JsonObject): Any {
-            try{
-                return AppearanceContinent(json["continent"]!!.toString(), json["counter"]!!.toString().toInt())
-            } catch(ex: Exception){
-                throw IllegalArgumentException()
-            }
-        }
     }
 }
 
@@ -83,7 +44,7 @@ class NamePercentage(
 
         override fun toObject(json: JsonObject): Any {
             try{
-                return AppearanceContinent(json["name"]!!.toString(), json["percentage"]!!.toString().toInt())
+                return NamePercentage(json["name"]!!.toString(), json["percentage"]!!.toString().toDouble())
             } catch(ex: Exception){
                 throw IllegalArgumentException()
             }
@@ -110,7 +71,7 @@ class NameCounter(
 
         override fun toObject(json: JsonObject): Any {
             try{
-                return AppearanceContinent(json["name"]!!.toString(), json["counter"]!!.toString().toInt())
+                return NameCounter(json["name"]!!.toString(), json["counter"]!!.toString().toInt())
             } catch(ex: Exception){
                 throw IllegalArgumentException()
             }

@@ -2,6 +2,7 @@
 ## this is a repo for research purposes
 
 ## INFO
+(more infos about the project you will find under: INFO.md)
 
 1. save all your results under /results
 2. save your all code and researches

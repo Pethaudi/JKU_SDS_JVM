@@ -1,4 +1,3 @@
-import DataForeman.AppearanceData
 import dao.CsvWorker
 import dao.DbWorker
 import dao.JsonWorker
