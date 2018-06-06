@@ -1,10 +1,7 @@
 package digger
 
 import dao.CsvWorker
-import entities.Appearance
-import entities.AppearanceContinent
-import entities.NamePercentage
-import entities.Pokemon
+import entities.*
 
 class BasicSizes {
     companion object {
@@ -54,6 +51,32 @@ class BasicSizes {
 
             getAppearancesPerContinent().forEach {
                 res.add(NamePercentage(it.continent, it.calcPercentage(sum)))
+            }
+
+            return res
+        }
+
+        ////////////////////// Pokemontable
+
+        fun getAllTypes() = pokemons.map { it.type }.toSet().toList().filter { it != null }.map { it!! }
+
+        fun getPokemon(id: Number) = pokemons.find { it.id == id }
+
+        fun getAppearancesPerTypes() : List<NameCounter> {
+            val res = mutableListOf<NameCounter>()
+            getAllTypes().forEach {
+
+                val tmp = NameCounter(it)
+
+                appearances.forEach {a ->
+                    val poke = getPokemon(a.pokemonid!!)
+
+                    if(poke != null){
+                        if(poke.type == it) tmp.counter++
+                    }
+                }
+
+                res.add(tmp)
             }
 
             return res

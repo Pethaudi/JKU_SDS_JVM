@@ -23,6 +23,10 @@ open class Counter(
     fun inc(){
         counter++
     }
+
+    companion object {
+        fun sum(data: List<Counter>) = data.sumBy { it.counter }
+    }
 }
 
 /*
@@ -84,5 +88,36 @@ class NamePercentage(
                 throw IllegalArgumentException()
             }
         }
+    }
+}
+
+class NameCounter(
+        val name: String,
+        counter: Int = 0
+) : Counter(counter) {
+    companion object : IJson {
+        override fun toJson(obj: Any): JsonObject {
+
+            if(obj is NameCounter) {
+                val builder = Json.createObjectBuilder()
+
+                return builder.add("name", obj.name)
+                        .add("percentage", obj.counter)
+                        .build()
+            }
+            throw IllegalArgumentException()
+        }
+
+        override fun toObject(json: JsonObject): Any {
+            try{
+                return AppearanceContinent(json["name"]!!.toString(), json["counter"]!!.toString().toInt())
+            } catch(ex: Exception){
+                throw IllegalArgumentException()
+            }
+        }
+    }
+
+    override fun toString(): String {
+        return "$name + $counter"
     }
 }

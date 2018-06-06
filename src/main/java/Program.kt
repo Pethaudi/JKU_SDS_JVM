@@ -3,9 +3,7 @@ import dao.CsvWorker
 import dao.DbWorker
 import dao.JsonWorker
 import digger.BasicSizes
-import entities.Appearance
-import entities.AppearanceContinent
-import entities.NamePercentage
+import entities.*
 import java.io.File
 
 val web_hauer = "/Users/peterhauer/Desktop/ProgrammingStuff/DataScience/JKU_SDS_WEB/src/data"
@@ -33,13 +31,17 @@ fun main(args: Array<String>){
     JsonWorker.writeToFile("AppearancesPerContinentPercentage",
             BasicSizes.getAppearancesPerContinentPercentage().map { NamePercentage.toJson(it) })*/
 
-    JsonWorker.writeToFile("Appearances",
+    /*JsonWorker.writeToFile("Appearances",
             BasicSizes.appearances.map {
                 try{Appearance.toJson(it)}
                 catch(ex: Exception) {null}
-            }.filter { p -> p != null }.map { j -> j!! })
+            }.filter { p -> p != null }.map { j -> j!! })*/
+
+    JsonWorker.writeToFile("AppearancesPerType", BasicSizes.getAppearancesPerTypes().map { NameCounter.toJson(it) })
 
     /*
+    spawn per type
+
     continent
         city
 
