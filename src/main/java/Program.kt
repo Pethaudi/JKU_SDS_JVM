@@ -3,6 +3,7 @@ import dao.CsvWorker
 import dao.DbWorker
 import dao.JsonWorker
 import digger.BasicSizes
+import entities.Appearance
 import entities.AppearanceContinent
 import entities.NamePercentage
 import java.io.File
@@ -26,12 +27,28 @@ fun main(args: Array<String>){
 
     //worker.insertAppearances()
 
-    JsonWorker.writeToFile("AppearancesPerContinent",
+    /*JsonWorker.writeToFile("AppearancesPerContinent",
             BasicSizes.getAppearancesPerContinent().map { AppearanceContinent.toJson(it) })
 
     JsonWorker.writeToFile("AppearancesPerContinentPercentage",
-            BasicSizes.getAppearancesPerContinentPercentage().map { NamePercentage.toJson(it) })
+            BasicSizes.getAppearancesPerContinentPercentage().map { NamePercentage.toJson(it) })*/
 
+    JsonWorker.writeToFile("Appearances",
+            BasicSizes.appearances.map {
+                try{Appearance.toJson(it)}
+                catch(ex: Exception) {null}
+            }.filter { p -> p != null }.map { j -> j!! })
+
+    /*
+    continent
+        city
+
+    gyms errechnen
+    pokestops errechnen
+        -> density
+
+    erscheinungen der pokemon einzeichnen
+    */
     copyFilesToWeb(web_hauer)
 }
 

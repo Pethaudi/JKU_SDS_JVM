@@ -1,6 +1,8 @@
 package entities
 
 import java.io.Serializable
+import javax.json.Json
+import javax.json.JsonObject
 import javax.persistence.*
 import kotlin.math.min
 
@@ -35,7 +37,7 @@ data class Appearance(
     val pokestop: Number? = null
     ) : Serializable {
 
-    companion object {
+    companion object : IJson {
         fun generateFromCsv(s: String): Appearance {
             val splitted = s.split(";")
 
@@ -80,6 +82,42 @@ data class Appearance(
             } catch(ex: Exception){
                 null
             }
+        }
+
+        override fun toJson(obj: Any): JsonObject {
+
+            if(obj is Appearance) {
+                val builder = Json.createObjectBuilder()
+                println(obj)
+                builder.add("pokemonid", obj.pokemonid!!.toInt())
+                        .add("degreeOfLatitude", obj.degreeOfLatitude!!.toInt())
+                        .add("degreeOfLongitude", obj.degreeOfLongitude!!.toInt())
+                        .add("dateofspawn", obj.dateofspawn)
+                        .add("time", obj.time)
+                        .add("terrain", obj.terrain)
+                        .add("distanceToWater", obj.distanceToWater!!.toInt())
+                        .add("city", obj.city)
+                        .add("continent", obj.continent)
+                        .add("weather", obj.weather)
+                        .add("temperature", obj.temperature!!.toInt())
+                        .add("windvelocity", obj.windvelocity!!.toInt())
+                        .add("winddirection", obj.winddirection!!.toInt())
+                        .add("airpressure", obj.airpressure!!.toInt())
+                        .add("sunrise", obj.sunrise)
+                        .add("sunset", obj.sunset)
+                        .add("minAfterSunrise", obj.minAfterSunrise!!.toInt())
+                        .add("minPreSunrise", obj.minPreSunrise!!.toInt())
+                        .add("densityOfPopulation", obj.densityOfPopulation!!.toInt())
+                        .add("gym", obj.gym?.toInt() ?: -1)
+                        .add("pokestop", obj.pokestop?.toInt() ?: -1)
+
+                return builder.build()
+            }
+            throw IllegalArgumentException()
+        }
+
+        override fun toObject(json: JsonObject): Any {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
     }
 }
