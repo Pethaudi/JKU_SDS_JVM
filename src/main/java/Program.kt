@@ -36,10 +36,12 @@ fun main(args: Array<String>){
                 catch(ex: Exception) {null}
             }.filter { p -> p != null }.map { j -> j!! })*/
 
-    JsonWorker.writeToFile("AppearancesPerType", BasicSizes.getAppearancesPerTypes().map { NameCounter.toJson(it) })
+    //JsonWorker.writeToFile("AppearancesPerType", BasicSizes.getAppearancesPerTypes().map { NameCounter.toJson(it) })
+    JsonWorker.writeToFile("AppearancesOverTime", BasicSizes.getAppearancesPerTypes().map { NameCounter.toJson(it) })
 
     /*
-    spawn per type
+    - spawn per type
+    spawn over time
 
     continent
         city

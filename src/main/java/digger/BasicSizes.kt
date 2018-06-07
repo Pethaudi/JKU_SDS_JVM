@@ -64,5 +64,20 @@ class BasicSizes {
 
             return res
         }
+
+        fun getAppearancesOverTime(): List<NameCounter> {
+            val res = mutableListOf<NameCounter>()
+
+            val appearanceTimes = appearances.map { appearance -> appearance.time!! }.toSet().toList()
+            appearanceTimes.forEach {
+                val tmp = NameCounter(it)
+                appearances.forEach {ap ->
+                    if(ap.time == it) tmp.counter++
+                }
+                res.add(tmp)
+            }
+
+            return res
+        }
     }
 }
