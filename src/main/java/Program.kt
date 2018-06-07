@@ -37,7 +37,7 @@ fun main(args: Array<String>){
             }.filter { p -> p != null }.map { j -> j!! })*/
 
     //JsonWorker.writeToFile("AppearancesPerType", BasicSizes.getAppearancesPerTypes().map { NameCounter.toJson(it) })
-    JsonWorker.writeToFile("AppearancesOverTime", BasicSizes.getAppearancesPerTypes().map { NameCounter.toJson(it) })
+    JsonWorker.writeToFile("AppearancesPerDays", BasicSizes.getAppearancesPerDays().map { NameCounter.toJson(it) })
 
     /*
     - spawn per type
