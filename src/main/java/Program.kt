@@ -41,7 +41,8 @@ fun main(args: Array<String>){
 
     /*
     - spawn per type
-    spawn over time
+    - spawn per day
+    spawn per day per continent
 
     continent
         city

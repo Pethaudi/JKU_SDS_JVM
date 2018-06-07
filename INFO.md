@@ -38,7 +38,7 @@ deletes and creates the file
 place here all classes that do the data digging
 #### BasicSizes.kt
 put here every basic size. what a basic size is?  
-everything that is easy to dig for 
+2 dimensional data
 
  - getAllContinents(): List<String>  
  - getAppearancesPerContinents(): List<NameCounter>  
