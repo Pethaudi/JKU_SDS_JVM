@@ -82,3 +82,34 @@ class NameCounter(
         return "$name + $counter"
     }
 }
+
+class AppearancesPerDayWithLatLong(
+        val pokemonid: Number,
+        val day: String,
+        val long: Number,
+        val lat: Number
+){
+    companion object : IJson {
+        override fun toJson(obj: Any): JsonObject {
+
+            if(obj is AppearancesPerDayWithLatLong) {
+                val builder = Json.createObjectBuilder()
+
+                return builder.add("pokemon", obj.pokemonid.toInt())
+                        .add("day", obj.day)
+                        .add("long", obj.long.toInt())
+                        .add("lat", obj.lat.toInt())
+                        .build()
+            }
+            throw IllegalArgumentException()
+        }
+
+        override fun toObject(json: JsonObject): Any {
+            try{
+                return NameCounter(json["name"]!!.toString(), json["counter"]!!.toString().toInt())
+            } catch(ex: Exception){
+                throw IllegalArgumentException()
+            }
+        }
+    }
+}
