@@ -83,22 +83,20 @@ class NameCounter(
     }
 }
 
-class AppearancesPerDayWithLatLong(
-        val pokemonid: Number,
-        val day: String,
-        val long: Number,
-        val lat: Number
-){
+data class Coordinate(
+        val pokemonid: Int,
+        val long: Double,
+        val lat: Double
+) {
     companion object : IJson {
         override fun toJson(obj: Any): JsonObject {
 
-            if(obj is AppearancesPerDayWithLatLong) {
+            if(obj is Coordinate) {
                 val builder = Json.createObjectBuilder()
 
-                return builder.add("pokemon", obj.pokemonid.toInt())
-                        .add("day", obj.day)
-                        .add("long", obj.long.toInt())
-                        .add("lat", obj.lat.toInt())
+                return builder.add("long", obj.long)
+                        .add("lat", obj.lat)
+                        .add("pokemonid", obj.pokemonid)
                         .build()
             }
             throw IllegalArgumentException()

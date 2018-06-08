@@ -1,6 +1,7 @@
 import dao.CsvWorker
 import dao.DbWorker
 import dao.JsonWorker
+import digger.AppearancesPerDayWithCoordinates
 import digger.BasicSizes
 import entities.*
 import java.io.File
@@ -37,7 +38,9 @@ fun main(args: Array<String>){
             }.filter { p -> p != null }.map { j -> j!! })*/
 
     //JsonWorker.writeToFile("AppearancesPerType", BasicSizes.getAppearancesPerTypes().map { NameCounter.toJson(it) })
-    JsonWorker.writeToFile("AppearancesPerDays", BasicSizes.getAppearancesPerDays().map { NameCounter.toJson(it) })
+    //JsonWorker.writeToFile("AppearancesPerDays", BasicSizes.getAppearancesPerDays().map { NameCounter.toJson(it) })
+
+    JsonWorker.writeToFile("AppearancesPerDayWithCoordinates", AppearancesPerDayWithCoordinates.start())
 
     /*
     - spawn per type

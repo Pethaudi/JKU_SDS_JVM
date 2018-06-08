@@ -8,6 +8,7 @@ class BasicSizes {
 
         val appearances = CsvWorker().getAllAppearances()
         val pokemons = CsvWorker().getAllPokemons()
+        val days = appearances.map { it.dateofspawn }.toSet().toList()
 
         fun getAllContinents() = appearances.map { ap -> ap.continent!! }.toSet().toList()
 
