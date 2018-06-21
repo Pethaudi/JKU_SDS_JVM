@@ -45,7 +45,9 @@ fun main(args: Array<String>){
     /*
     - spawn per type
     - spawn per day
-    spawn per day per continent
+    - spawn per day per continent
+    spawn per daytime (hour)
+    spawn per daytime per day (hour)
 
     continent
         city
@@ -54,7 +56,7 @@ fun main(args: Array<String>){
     pokestops errechnen
         -> density
 
-    erscheinungen der pokemon einzeichnen
+    - erscheinungen der pokemon einzeichnen
     */
     copyFilesToWeb(web_hauer)
 }
