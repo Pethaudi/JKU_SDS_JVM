@@ -40,7 +40,9 @@ fun main(args: Array<String>){
     //JsonWorker.writeToFile("AppearancesPerType", BasicSizes.getAppearancesPerTypes().map { NameCounter.toJson(it) })
     //JsonWorker.writeToFile("AppearancesPerDays", BasicSizes.getAppearancesPerDays().map { NameCounter.toJson(it) })
 
-    JsonWorker.writeToFile("AppearancesPerDayWithCoordinates", AppearancesPerDayWithCoordinates.start())
+    //JsonWorker.writeToFile("AppearancesPerDayWithCoordinates", AppearancesPerDayWithCoordinates.start())
+
+    JsonWorker.writeToFile("AppearancesPerHour", BasicSizes.getAppearancesPerHour().map { NameCounter.toJson(it) })
 
     /*
     - spawn per type
@@ -48,7 +50,7 @@ fun main(args: Array<String>){
     - spawn per day per continent
     spawn per daytime (hour)
     spawn per daytime per day (hour)
-
+    spawn per country
     continent
         city
 

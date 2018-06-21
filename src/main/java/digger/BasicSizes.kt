@@ -2,6 +2,10 @@ package digger
 
 import dao.CsvWorker
 import entities.*
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 class BasicSizes {
     companion object {
@@ -76,6 +80,26 @@ class BasicSizes {
                     if(ap.dateofspawn == it) tmp.counter++
                 }
                 res.add(tmp)
+            }
+
+            return res
+        }
+
+        fun getAppearancesPerHour(): List<NameCounter> {
+            val dtf = DateTimeFormatter.ofPattern("HH:mm:ss")
+            val res = mutableListOf<NameCounter>()
+            val times = appearances.map { LocalTime.parse(it.time, dtf).hour }
+
+            times.toSet()
+                    .forEach { res.add(NameCounter(it.toString())) }
+
+            times.forEach {
+                for(elem in res){
+                    if(elem.name == it.toString()){
+                        elem.counter++
+                        break
+                    }
+                }
             }
 
             return res
