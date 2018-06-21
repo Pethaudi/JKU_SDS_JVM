@@ -4,6 +4,7 @@ import dao.JsonWorker
 import digger.AppearancesPerDayWithCoordinates
 import digger.BasicSizes
 import entities.*
+import entities.sorted.AppearancesPerDayPerHour
 import java.io.File
 
 val web_hauer = "/Users/peterhauer/Desktop/ProgrammingStuff/DataScience/JKU_SDS_WEB/src/data"
@@ -42,13 +43,14 @@ fun main(args: Array<String>){
 
     //JsonWorker.writeToFile("AppearancesPerDayWithCoordinates", AppearancesPerDayWithCoordinates.start())
 
-    JsonWorker.writeToFile("AppearancesPerHour", BasicSizes.getAppearancesPerHour().map { NameCounter.toJson(it) })
+    //JsonWorker.writeToFile("AppearancesPerHour", BasicSizes.getAppearancesPerHour().map { NameCounter.toJson(it) })
+    JsonWorker.writeToFile("AppearancesPerDayPerHour", AppearancesPerDayPerHour.start())
 
     /*
     - spawn per type
     - spawn per day
     - spawn per day per continent
-    spawn per daytime (hour)
+    - spawn per daytime (hour)
     spawn per daytime per day (hour)
     spawn per country
     continent
