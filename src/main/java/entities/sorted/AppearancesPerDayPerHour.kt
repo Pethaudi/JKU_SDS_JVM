@@ -17,14 +17,18 @@ object AppearancesPerDayPerHour {
         val appearances = CsvWorker().getAllAppearances()
 
         val res = mutableListOf<Day>()
-        val dayscheme = mutableListOf<NameCounter>()
-
-        for(i in 0..23)
-            dayscheme.add(NameCounter(i.toString(), 0))
 
         appearances.map { it.dateofspawn }
                 .toSet()
-                .forEach { res.add(Day(it!!, dayscheme)) }
+                .forEach {
+
+                    val dayscheme = mutableListOf<NameCounter>()
+
+                    for(i in 0..23)
+                        dayscheme.add(NameCounter(i.toString(), 0))
+
+                    res.add(Day(it!!, dayscheme))
+                }
 
         handleAppearances(appearances, res)
 
@@ -38,28 +42,20 @@ object AppearancesPerDayPerHour {
     private fun handleAppearances(appearances: List<Appearance>, days: List<Day>){
 
         val dtf = DateTimeFormatter.ofPattern("HH:mm:ss")
-        var wasfound = false
 
         appearances.forEach { app ->
-
             for(day in days){
-
                 if(day.day == app.dateofspawn){
                     for(hourcounter in day.hours){
                         val hour = LocalTime.parse(app.time, dtf).hour
+
                         if(hourcounter.name == hour.toString()){
                             hourcounter.counter++
-                            wasfound = true
                             break
                         }
                     }
                 }
-
-                if(wasfound)
-                    break
             }
-
-            wasfound = true
         }
     }
 
