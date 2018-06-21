@@ -51,7 +51,8 @@ fun main(args: Array<String>){
     - spawn per day
     - spawn per day per continent
     - spawn per daytime (hour)
-    spawn per daytime per day (hour)
+    - spawn per daytime per day (hour)
+    show spawns per daytime per day on google maps
     spawn per country
     continent
         city
