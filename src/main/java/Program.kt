@@ -8,7 +8,7 @@ import entities.sorted.AppearancesPerDayPerHour
 import java.io.File
 
 val web_hauer = "/Users/peterhauer/Desktop/ProgrammingStuff/DataScience/JKU_SDS_WEB/src/data"
-val web_oberaigner = ""
+val web_oberaigner = "/Users/maxoberaigner/Desktop/JKU_SDS_WEB/src/data"
 
 fun main(args: Array<String>){
     //AppearanceData().start()
