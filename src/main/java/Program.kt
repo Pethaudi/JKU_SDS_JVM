@@ -63,6 +63,7 @@ fun main(args: Array<String>){
 
     spawn more pokemon at one spot at a specific time
     calc nests (a spot where a high amount of one pokemon spawn
+    calc whatever
 
     gyms errechnen
     pokestops errechnen
