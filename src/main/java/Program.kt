@@ -57,6 +57,13 @@ fun main(args: Array<String>){
     continent
         city
 
+    average weight
+    spawntype per daytime
+    are all pokemons spawned at least one time? (hi/lo)
+
+    spawn more pokemon at one spot at a specific time
+    calc nests (a spot where a high amount of one pokemon spawn
+
     gyms errechnen
     pokestops errechnen
         -> density
@@ -72,4 +79,12 @@ fun copyFilesToWeb(path: String){
         val dest = File(path + "/" + it.name)
         it.copyTo(dest, true)
     }
+}
+
+/*
+write once, never migrate
+this methode just generates the JS code for the customized icons for google maps on the front end
+ */
+fun generateCustomGoogleMapsIcons(){
+
 }
