@@ -8,7 +8,7 @@ import entities.sorted.AppearancesPerDayPerHour
 import java.io.File
 
 val web_hauer = "/Users/peterhauer/Desktop/ProgrammingStuff/DataScience/JKU_SDS_WEB/src/data"
-val web_oberaigner = ""
+val web_oberaigner = "/Users/maxoberaigner/Desktop/JKU_SDS_WEB/src/data"
 
 fun main(args: Array<String>){
     //AppearanceData().start()
@@ -57,6 +57,14 @@ fun main(args: Array<String>){
     continent
         city
 
+    average weight
+    spawntype per daytime
+    are all pokemons spawned at least one time? (hi/lo)
+
+    spawn more pokemon at one spot at a specific time
+    calc nests (a spot where a high amount of one pokemon spawn
+    calc whatever
+
     gyms errechnen
     pokestops errechnen
         -> density
@@ -72,4 +80,12 @@ fun copyFilesToWeb(path: String){
         val dest = File(path + "/" + it.name)
         it.copyTo(dest, true)
     }
+}
+
+/*
+write once, never migrate
+this methode just generates the JS code for the customized icons for google maps on the front end
+ */
+fun generateCustomGoogleMapsIcons(){
+
 }
