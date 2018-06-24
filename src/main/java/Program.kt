@@ -11,6 +11,7 @@ val web_hauer = "/Users/peterhauer/Desktop/ProgrammingStuff/DataScience/JKU_SDS_
 val web_oberaigner = "/Users/maxoberaigner/Desktop/JKU_SDS_WEB/src/data"
 
 fun main(args: Array<String>){
+    SpawnsTogether().getSpawns()
     //AppearanceData().start()
     //DBWorker.testMe()
     val worker = CsvWorker()
@@ -73,7 +74,7 @@ fun main(args: Array<String>){
 
     - erscheinungen der pokemon einzeichnen
     */
-    copyFilesToWeb(web_hauer)
+    //copyFilesToWeb(web_hauer)
 
     //generateCustomGoogleMapsIcons()
     //generateGoogleMapsIconPicker()

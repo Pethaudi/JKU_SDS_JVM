@@ -9,8 +9,5 @@
         <module name="JKU_SDS_JVM" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="JKU_SDS_JVM" target="1.5" />
-    </bytecodeTargetLevel>
   </component>
 </project>
