@@ -27,9 +27,9 @@ fun main(args: Array<String>){
     //worker.insertAppearances()
 
     /*JsonWorker.writeToFile("AppearancesPerContinent",
-            BasicSizes.getAppearancesPerContinent().map { AppearanceContinent.toJson(it) })
+            BasicSizes.getAppearancesPerContinent().map { AppearanceContinent.toJson(it) })*/
 
-    JsonWorker.writeToFile("AppearancesPerContinentPercentage",
+    /*JsonWorker.writeToFile("AppearancesPerContinentPercentage",
             BasicSizes.getAppearancesPerContinentPercentage().map { NamePercentage.toJson(it) })*/
 
     /*JsonWorker.writeToFile("Appearances",
@@ -44,7 +44,7 @@ fun main(args: Array<String>){
     //JsonWorker.writeToFile("AppearancesPerDayWithCoordinates", AppearancesPerDayWithCoordinates.start())
 
     //JsonWorker.writeToFile("AppearancesPerHour", BasicSizes.getAppearancesPerHour().map { NameCounter.toJson(it) })
-    JsonWorker.writeToFile("AppearancesPerDayPerHour", AppearancesPerDayPerHour.start())
+    //JsonWorker.writeToFile("AppearancesPerDayPerHour", AppearancesPerDayPerHour.start())
 
     /*
     - spawn per type
@@ -71,7 +71,9 @@ fun main(args: Array<String>){
 
     - erscheinungen der pokemon einzeichnen
     */
-    copyFilesToWeb(web_hauer)
+    //copyFilesToWeb(web_hauer)
+
+    generateCustomGoogleMapsIcons()
 }
 
 fun copyFilesToWeb(path: String){
@@ -87,5 +89,11 @@ write once, never migrate
 this methode just generates the JS code for the customized icons for google maps on the front end
  */
 fun generateCustomGoogleMapsIcons(){
+    val iconfile = File("icons.js")
 
+    if(iconfile.exists())
+        iconfile.delete()
+    iconfile.createNewFile()
+
+    iconfile.writeText(PreCalculatedForJS.getGoogleMapsIconString())
 }
