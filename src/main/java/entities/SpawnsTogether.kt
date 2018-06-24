@@ -22,7 +22,7 @@ class SpawnsTogether {
 
            if(list.size > 0) {
                var temp = list.get(0).category
-               list.drop(0)
+               list.removeAt(0)
                list.forEach {
                    if (it.category == temp) {
                        check = true
