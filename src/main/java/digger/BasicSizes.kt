@@ -107,13 +107,17 @@ class BasicSizes {
 
         fun getAppearancesPerTerrain(): List<NameCounter>{
 
+            println("Starting the methode")
             val res = mutableListOf<NameCounter>()
             appearances.map { it.terrain!! }.toSet().toList().forEach { res.add(NameCounter(it)) }
+
+            println(res.size)
 
             appearances.forEach {
                 for(terrain in res){
                     if(terrain.name == it.terrain){
                         terrain.counter++
+                        break
                     }
                 }
             }
