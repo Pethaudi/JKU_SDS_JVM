@@ -18,7 +18,7 @@ object PreCalculatedForJS {
     }
 
     fun getGoogleMapsIconSelector(): String {
-        val beginning = "function getMarker(pokemonid){\n"
+        val beginning = "function getMarker(pokemonid){\n" + getGoogleMapsIconString()
 
         var ifs = "    if(pokemonid == 1){\n" +
                 "       return image001\n" +
@@ -87,9 +87,9 @@ object PreCalculatedForJS {
 
         private fun calcNewSize(){
             val n = if(scaledSizeX > scaledSizeY)
-                    20.0 / scaledSizeX
+                    40.0 / scaledSizeX
                 else
-                    20.0 / scaledSizeY
+                    40.0 / scaledSizeY
 
             scaledSizeX = (n * scaledSizeX).roundToInt()
             scaledSizeY = (n * scaledSizeY).roundToInt()
