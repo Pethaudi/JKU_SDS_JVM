@@ -17,6 +17,31 @@ object PreCalculatedForJS {
         return icons.map { it.toString() }.joinToString("\n")
     }
 
+    fun getGoogleMapsIconSelector(): String {
+        val beginning = "function getMarker(pokemonid){\n"
+
+        var ifs = "    if(pokemonid == 1){\n" +
+                "       return image001\n" +
+                "   }\n"
+
+        for(i in 2..151){
+            val begin = "   else if(pokemonid == $i){\n"
+
+            val image = if(i > 99) i.toString()
+                else if(i > 9) "0$i"
+                else "00$i"
+
+            val inbetween = "       return image$image\n"
+
+            val end = "    }\n"
+
+            ifs += begin + inbetween + end
+        }
+
+        val end = "}"
+        return beginning + ifs + end
+    }
+
     private fun sort(list: MutableList<Icon>){
         for(elem1 in list.indices){
             for(elem2 in list.indices){

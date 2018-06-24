@@ -73,7 +73,8 @@ fun main(args: Array<String>){
     */
     //copyFilesToWeb(web_hauer)
 
-    generateCustomGoogleMapsIcons()
+    //generateCustomGoogleMapsIcons()
+    generateGoogleMapsIconPicker()
 }
 
 fun copyFilesToWeb(path: String){
@@ -96,4 +97,14 @@ fun generateCustomGoogleMapsIcons(){
     iconfile.createNewFile()
 
     iconfile.writeText(PreCalculatedForJS.getGoogleMapsIconString())
+}
+
+fun generateGoogleMapsIconPicker(){
+    val pickerfile = File("picker.js")
+
+    if(pickerfile.exists())
+        pickerfile.delete()
+    pickerfile.createNewFile()
+
+    pickerfile.writeText(PreCalculatedForJS.getGoogleMapsIconSelector())
 }
