@@ -157,3 +157,27 @@ data class Pokemon(
         }
     }
 }
+
+data class SpawnedTogether(
+        val spawns: List<Boolean>
+){
+    companion object : IJson {
+        override fun toJson(obj: Any): JsonObject {
+            val builder = Json.createObjectBuilder()
+
+            if(obj is SpawnedTogether){
+                val arrbuilder = Json.createArrayBuilder()
+
+                obj.spawns.map { if(it) 1 else 0 }.forEach { arrbuilder.add(it) }
+
+                builder.add("spawns", arrbuilder.build())
+            }
+
+            return builder.build()
+        }
+
+        override fun toObject(json: JsonObject): Any {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
+    }
+}
