@@ -9,29 +9,37 @@ class SpawnsTogether {
         var list = mutableListOf<Pokemon>()
         var result = mutableListOf<String>()
         var check = false
+        var failcnt = 0
        spawns.forEach {
            cnt = 0
-           list = mutableListOf<Pokemon>()
+           list.clear()
            while(cnt < it.spawns.size){
                if(it.spawns.get(cnt) == true){
                    list.add(pokemons.get(cnt))
                }
                cnt++
            }
-           cnt=1
-           var temp = list.get(0).type
-           while(cnt < list.size){
-               if (list.get(cnt).type == temp ){
-                   check = true
-                   break
+           if(list.size > 0) {
+               var temp = list.get(0).category
+               list.drop(0)
+               list.forEach {
+                   if (it.category == temp) {
+                       check = true
+                   }
                }
+               if (check == true) {
+                   result.add(temp.toString())
+               } else {
+                   result.add("noMatch")
+               }
+               check = false
            }
-           if (check){
-               result.add(temp.toString())
-           }
-           else{
-               result.add("noMatch")
-           }
+           else
+               failcnt++
        }
+
+        println(failcnt)
+
+
     }
 }
