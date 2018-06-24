@@ -15,10 +15,11 @@ class SpawnsTogether {
            list.clear()
            while(cnt < it.spawns.size){
                if(it.spawns.get(cnt) == true){
-                   list.add(pokemons.get(cnt))
+                   list.add(pokemons.get(cnt + 1))
                }
                cnt++
            }
+
            if(list.size > 0) {
                var temp = list.get(0).category
                list.drop(0)
